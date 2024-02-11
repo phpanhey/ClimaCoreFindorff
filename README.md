@@ -1,4 +1,4 @@
-# Weather Scraper
+# ClimaCoreFindorff - the Weather Data Scraper
 
 This is a console application that scrapes the website "https://www.ach-du-schan.de/" to retrieve local weather data. The user can specify whether they want to retrieve the temperature and/or humidity from the website. The retrieved data is then printed to the console in order to be piped to other programs for home automation purposes.
 
