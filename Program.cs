@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using CommandLine;
 using System.Text;
+using System.Globalization;
 
 // Class to hold command line options
 public class Options
@@ -46,7 +47,7 @@ class Program
                     }
                     sb.Append(GetHumidity(htmlDoc));
                 }
-                
+
                 // Print result
                 Console.WriteLine(sb.ToString());
             });
@@ -65,17 +66,17 @@ class Program
     }
 
     // Method to get temperature from HTML document
-    static double GetTemperature(HtmlDocument htmlDoc)
+    static string GetTemperature(HtmlDocument htmlDoc)
     {
         var singlenodecontent = SingleNodeContent(htmlDoc, "//font[@face='Arial'][@color='#FF0000'][@size='7']");
-        return Double.Parse(singlenodecontent.Replace("�C", ""));
+        return singlenodecontent.Replace(",", ".").Replace("�C", "").Trim();
     }
 
     // Method to get humidity from HTML document
-    static double GetHumidity(HtmlDocument htmlDoc)
+    static string GetHumidity(HtmlDocument htmlDoc)
     {
         string singlenodecontent = SingleNodeContent(htmlDoc, "//font[@face='Arial'][@color='#0080FF'][@size='7']");
-        return Double.Parse(singlenodecontent.Replace("%", ""));
+        return singlenodecontent.Replace("%", "").Replace(",", ".").Trim();
     }
 
     // Method to get content of a single node from HTML document
