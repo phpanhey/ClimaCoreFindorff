@@ -76,7 +76,8 @@ class Program
     // Method to get humidity from HTML document
     static string GetHumidity(HtmlDocument htmlDoc)
     {
-        string singlenodecontent = SingleNodeContent(htmlDoc, "//font[@face='Arial'][@color='#0080FF'][@size='7']");
+        // string singlenodecontent = SingleNodeContent(htmlDoc, "//font[@face='Arial'][@color='#0080FF'][@size='7']");
+        var singlenodecontent = SingleNodeContent(htmlDoc, "//td[contains(@style, 'color: #0080FF') and contains(@style, 'font-size: 3.5em')]");
         return singlenodecontent.Replace("%", "").Replace(",", ".").Trim();
     }
 
