@@ -68,8 +68,9 @@ class Program
     // Method to get temperature from HTML document
     static string GetTemperature(HtmlDocument htmlDoc)
     {
-        var singlenodecontent = SingleNodeContent(htmlDoc, "//font[@face='Arial'][@color='#FF0000'][@size='7']");
-        return singlenodecontent.Replace(",", ".").Replace("�C", "").Trim();
+        
+        var singlenodecontent = SingleNodeContent(htmlDoc, "//td[contains(@style, 'color: #FF0000') and contains(@style, 'font-size: 3.5em')]");
+        return singlenodecontent.Replace(",", ".").Replace("&#176;C", "").Trim();
     }
 
     // Method to get humidity from HTML document
